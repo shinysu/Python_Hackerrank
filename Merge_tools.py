@@ -1,5 +1,5 @@
 '''https://www.hackerrank.com/challenges/merge-the-tools/problem'''
-
+import collections
 
 def merge_the_tools(string, k):
     t = []
@@ -8,15 +8,8 @@ def merge_the_tools(string, k):
     for i in range(0, len(string), k):
         t.append(string[i:i + k])
     for word in t:
-        newword=[]
-        for i in range(k):
-            if word[i] not in newword:
-                newword.append(word[i])
-        unique_word.append(''.join(newword))
-    print("\n".join(unique_word))
-
-
-
+        word = "".join(collections.OrderedDict.fromkeys(word))
+        print(word)
 
 if __name__ == '__main__':
     string, k = input(), int(input())
